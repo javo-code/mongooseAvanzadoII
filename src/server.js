@@ -11,7 +11,7 @@ import { productDaoFS } from './daos/fileSystem/products.dao.js';
 import MessagesDaoFS from './daos/fileSystem/chat.dao.js';
 const msgDaoFS = new MessagesDaoFS(__dirname+'/data/messages.json');
 
-import "./daos/mongoDB/connection.js";
+import "./db/connection.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
