@@ -5,8 +5,12 @@ export default class MessageDaoFS{
         this.path = path;
     }
     
-    async createMsg(msg){
+    async createMsg(obj){
         try {
+            const msg = {
+                id: await this.#getMaxId() + 1,
+                ...obj
+            }
             const msgFile = await this.getAll();
             msgFile.push(msg);
             await fs.promises.writeFile(this.path, JSON.stringify(msgFile));
@@ -15,6 +19,15 @@ export default class MessageDaoFS{
             console.log(error);
         }
     }
+
+    async #getMaxId() {
+        let maxId = 0;
+        const msgs = await this.getAll();
+        msgs.map((msg) => { 
+          if (msg.id > maxId) maxId = msg.id;                                       
+        });
+        return maxId;
+      }
 
     async getAll(){
         try {

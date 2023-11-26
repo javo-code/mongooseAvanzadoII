@@ -1,7 +1,11 @@
 import ProductDaoMongoDB from "../dao/mongoDB/products.dao.js";
-const prodDao = new ProductDaoMongoDB();
+const prodDao = new ProductDaoMongoDB(); 
 
-/* S */
+/* import ProductDaoFS from "../dao/fileSystem/products.dao.js";
+import { __dirname } from "../utils.js";
+const prodDao = new ProductDaoFS(
+  __dirname + '/data/products.json'
+) */
 
 export const getAll = async () => {
   try {
@@ -14,7 +18,7 @@ export const getAll = async () => {
 export const getById = async (id) => {
   try {
     const prod = await prodDao.getById(id);
-    if (!prod) return false; //el controller recibe esta respuesta
+    if (!prod) return false;
     else return prod;
   } catch (error) {
     console.log(error);
