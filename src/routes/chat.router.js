@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
-import { createMsg, deleteMsg, getAllMsgs, getMsgById, updateMsg } from "../controllers/products.controller.js";
+import { createMsg, deleteMsg, getAllMsgs, getMsgById, updateMsg } from "../controllers/chat.controller.js";
 
 
 //MOSTRAR TODOS LOS MENSAJESS
