@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-export const productCollection = "product";
+const productCollectionName = 'products'
 
 export const productSchema = new Schema({
     title: { type: String, required: true },
@@ -12,4 +12,4 @@ export const productSchema = new Schema({
     thumbnails: { type: String }
 });
 
-export const ProductModel = model(productCollection, productSchema);
+export const ProductModel = model(productCollectionName, productSchema);
