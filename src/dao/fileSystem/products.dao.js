@@ -4,7 +4,7 @@ export default class ProductDaoFS {
   constructor(path) {
     this.path = path;
   }
-  async getProducts() {
+  async getAll() {
     try {
       if (fs.existsSync(this.path)) {
         const productsJSON = await fs.promises.readFile(this.path, "utf-8");
@@ -18,7 +18,7 @@ export default class ProductDaoFS {
   }
   async #getMaxId() {
     let maxId = 0;
-    const products = await this.getProducts();
+    const products = await this.getAll();
     products.map((product) => {
       if (product.id > maxId) maxId = product.id;
     });
@@ -33,7 +33,7 @@ export default class ProductDaoFS {
         status: true,
         ...prod
       };
-      const products = await this.getProducts();
+      const products = await this.getAll();
       products.push(product);
       await fs.promises.writeFile(this.path, JSON.stringify(products));
       return product;
@@ -45,7 +45,7 @@ export default class ProductDaoFS {
 
   async getProductById(idProduct) {
     try {
-      const products = await this.getProducts();
+      const products = await this.getAll();
       const productById = products.find((product) => product.id === idProduct);
       if (!productById) return false;
       return productById;
@@ -56,7 +56,7 @@ export default class ProductDaoFS {
 
   async updateProduct(obj, id) {
     try {
-      const products = await this.getProducts();
+      const products = await this.getAll();
       const productIndex = products.findIndex(prod => prod.id === id);
       if (productIndex === -1) return false;
       else {
@@ -73,7 +73,7 @@ export default class ProductDaoFS {
 
   async deleteProduct(idProduct) {
     try {
-      const products = await this.getProducts();
+      const products = await this.getAll();
       if (products.length < 0) return false;
       const updatedArray = products.filter((product) => product.id !== idProduct);
       await fs.promises.writeFile(this.path, JSON.stringify(updatedArray));
@@ -82,9 +82,9 @@ export default class ProductDaoFS {
     }
   }
 
-  async getProductsByLimit(limit) {
+  async getAllByLimit(limit) {
     try {
-      const products = await this.getProducts();
+      const products = await this.getAll();
       if (!limit || limit >= products.length) return products;
       else return products.slice(0, limit);
     } catch (error) {

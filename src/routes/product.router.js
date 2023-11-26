@@ -2,7 +2,6 @@ import { Router } from "express";
 const router = Router();
 
 import { productValidator } from "../middleware/productValidator.js";
-import { productDaoFS } from "../daos/fileSystem/products.dao.js";
 import { createProduct, deleteProduct, getAllProducts, getProductById, updateProduct } from "../controllers/products.controller.js";
 
 

@@ -8,9 +8,9 @@ import viewRouter from './routes/views.router.js';
 
 import { Server } from "socket.io";
 import fs from 'fs';
-import { productDaoFS } from './daos/fileSystem/products.dao.js';
+import { productDaoFS } from './dao/fileSystem/products.dao.js';
 
-import MessagesDaoFS from './daos/fileSystem/chat.dao.js';
+import MessagesDaoFS from './dao/fileSystem/chat.dao.js';
 const msgDaoFS = new MessagesDaoFS(__dirname+'/data/messages.json');
 
 import "./db/connection.js";
