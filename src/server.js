@@ -5,6 +5,8 @@ import { __dirname } from "./utils.js";
 import productRouter from "./routes/product.router.js";
 import cartRouter from "./routes/cart.router.js";
 import viewRouter from './routes/views.router.js';
+import chatRouter from './routes/chat.router.js';
+
 
 import { Server } from "socket.io";
 import fs from 'fs';
@@ -23,6 +25,7 @@ app.use(express.static(__dirname + "/public"));
 app.use('/', viewRouter);
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);
+app.use('/api/chat', chatRouter);
 
 app.use(errorHandler);
 
