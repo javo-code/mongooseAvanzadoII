@@ -7,13 +7,13 @@ import cartRouter from "./routes/cart.router.js";
 import viewRouter from './routes/views.router.js';
 import chatRouter from './routes/chat.router.js';
 
-
 import { Server } from "socket.io";
 import fs from 'fs';
 import { productDaoFS } from './dao/fileSystem/products.dao.js';
 
 import MessagesDaoFS from './dao/fileSystem/chat.dao.js';
-const msgDaoFS = new MessagesDaoFS(__dirname+'/data/messages.json');
+import { MessageModel } from "./dao/mongoDB/models/chat.model.js";
+const msgDaoFS = new MessagesDaoFS(__dirname + '/data/messages.json');
 
 import "./db/connection.js";
 import { errorHandler } from "./middleware/errorHandler.js";
@@ -106,4 +106,14 @@ socketServer.on('connection', async (socket) => {
     socket.on('chat:typing', (data)=>{
         socket.broadcast.emit('chat:typing', data)
     })
+  
+  socket.on('chat:message', async (message) => {
+    try {
+        message.userName = message.userName || 'Nombre predeterminado';
+        await MessageModel.create(message);
+        // Lógica adicional si es necesario después de guardar el mensaje en la base de datos
+    } catch (error) {
+        console.error('Error al guardar el mensaje:', error);
+    }
+});
 })
