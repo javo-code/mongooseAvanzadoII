@@ -40,8 +40,6 @@ const httpServer = app.listen(PORT, () => {
 
 const socketServer = new Server(httpServer);
 let products = []; // Array de productos
-
-// Cargar los productos desde el archivo al arrancar el servidor
 fs.readFile('src/data/products.json', 'utf-8', (err, data) => {
   if (!err) {
     products = JSON.parse(data);
@@ -53,24 +51,23 @@ fs.readFile('src/data/products.json', 'utf-8', (err, data) => {
 socketServer.on('connection', async (socket) => {
   console.log('✔ Cliente conectado');
 
-  // Emitir productos al cliente al conectarse
+  
   socket.emit('arrayProducts', products);
 
   socket.on('newProduct', (product) => {
-    // Agregar el nuevo producto al array de productos
+    
     products.push(product);
 
-    // Emitir el nuevo producto a todos los clientes
     socketServer.emit('arrayProducts', products);
 
-    // Guardar los productos en el archivo products.json
+    
     fs.writeFile('src/data/products.json', JSON.stringify(products, null, 2), (err) => {
       if (err) {
         console.error('Error al guardar los productos:', err);
       } else {
         console.log('Productos guardados exitosamente en "products.json"');
 
-        // Emitir el nuevo producto a todos los clientes, incluyendo al que lo creó
+        
         socketServer.emit('newProductAdded', product);
       }
     });
@@ -81,7 +78,7 @@ socketServer.on('connection', async (socket) => {
       await productDaoFS.deleteProduct(parseInt(productId));
       const updatedProducts = await productDaoFS.getProducts();
 
-      // Emitir los productos actualizados a todos los clientes
+      
       socketServer.emit('arrayProducts', updatedProducts);
     } catch (error) {
       console.error('Error al eliminar el producto:', error);
@@ -109,9 +106,7 @@ socketServer.on('connection', async (socket) => {
   
   socket.on('chat:message', async (message) => {
     try {
-        message.userName = message.userName || 'Nombre predeterminado';
         await MessageModel.create(message);
-        // Lógica adicional si es necesario después de guardar el mensaje en la base de datos
     } catch (error) {
         console.error('Error al guardar el mensaje:', error);
     }
