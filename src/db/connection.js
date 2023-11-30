@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const MONGO_URL = 'mongodb://127.0.0.1:27017/ecommerce';
 
-const MONGO_ATLAS_URL = 'mongodb+srv://romerofj26:admin@datavaultcluster.bxnyw28.mongodb.net/portfolio?retryWrites=true&w=majority';
+const MONGO_ATLAS_URL = 'mongodb+srv://romerofj26:admin@datavaultcluster.bxnyw28.mongodb.net/ecommerce?retryWrites=true&w=majority';
 
   try {
     await mongoose.connect(MONGO_ATLAS_URL);
