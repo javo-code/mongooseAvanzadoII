@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import { Schema, model } from "mongoose";
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   first_name: {
     type: String,
     required: true,
@@ -8,20 +8,17 @@ const UserSchema = new mongoose.Schema({
   },
   last_name: { type: String, required: true },
   age: { type: Number },
-  email:  { type: String, required: true, },  
+  email:  { type: String, required: true, unique: true },  
   gender:  { type: String, required: true },
-  products:[
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'products',
-      default: []
-    }
-  ]
+  carts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'carts',
+    default: []
+  }]
 });
 
-
 UserSchema.pre('find', function(){
-  this.populate('products')
+  this.populate('carts')
 })
 
-export const UserModel = mongoose.model('users', UserSchema); 
+export const UserModel = model('users', UserSchema); 

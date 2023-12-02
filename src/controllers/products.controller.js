@@ -75,9 +75,9 @@ export const getProductsByLimit = async (req, res, next) => {
 
 export const addProdToCart = async (req, res, next) => {
   try {
-    const { idUser } = req.params;
+    const { idCart } = req.params;
     const { idProd } = req.params;
-    const newProd = await service.addProdToCart(idUser, idProd);
+    const newProd = await service.addProdToCart(idCart, idProd);
     res.json(newProd);
   } catch (error) {
     next(error)

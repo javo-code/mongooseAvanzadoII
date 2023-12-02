@@ -56,8 +56,6 @@ export default class ProductDaoMongoDB {
             throw new Error('Error retrieving products by limit');
         }
     }
-
-
     
     async addProdToCart(cartId, prodId) {
         try {
@@ -66,12 +64,11 @@ export default class ProductDaoMongoDB {
                 throw new Error('Cart does not found');
             }
             cart.products.push(prodId);
-    await cart.save();
-    return cart;
-    } catch (error) {
-        console.log(error);
-        throw new Error('Error addi product to cart');
+            await cart.save();
+            return cart;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error adding product to cart');
+        }
     }
-}
-
 }

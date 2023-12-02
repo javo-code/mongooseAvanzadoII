@@ -64,7 +64,7 @@ export const remove = async (id) => {
     console.log(error);
   }
 };
-
+/* revisar */
 export const getProductsByLimit = async (limit) => {
     try {
         const products = await prodDao.getProductsByLimit(limit);
@@ -75,11 +75,11 @@ export const getProductsByLimit = async (limit) => {
   }
 };
 
-export const addProdToCart = async (userId, prodId) => {
+export const addProdToCart = async (cartId, prodId) => {
   try {
     const exists = await prodDao.getById(prodId);
     if(!exists) throw new Error('Product does not exist');
-    const newProd = await prodDao.addProdToCart(userId, prodId);
+    const newProd = await prodDao.addProdToCart(cartId, prodId);
     return newProd;
   } catch (error) {
     console.log(error);

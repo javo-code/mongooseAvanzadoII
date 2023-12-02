@@ -5,19 +5,22 @@ const router = Router();
 import * as controller from "../controllers/carts.controller.js";
 
 
-//MOSTRAR TODOS LOS PRODUCTOS
+//MOSTRAR TODOS LOS CARRITOS
 router.get("/all", controller.getAllCarts);
 
-//CREAR PRODUCTO.
+//CREAR CARRITO.
 router.post("/", controller.createCart);
 
-//MOSTRAR PRODUCTO POR ID.
+//MOSTRAR CARRITO POR ID.
 router.get("/:id", controller.getCartById);
 
-//MODIFICAR PRODUCTO.
+//MODIFICAR CARRITO.
 router.put("/:id", controller.updateCart);
 
-//ELIMINAR PRODUCTO.
+//ELIMINAR CARRITO.
 router.delete("/:id", controller.deleteCart);
+
+//AGRGAR CARRITO AL USUARIO.
+router.post("/add/:userId/:cartId", controller.addCartToUser);
 
 export default router;

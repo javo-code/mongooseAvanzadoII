@@ -27,7 +27,7 @@ app.use('/', viewRouter);
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);
 app.use('/api/chat', chatRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 
 app.use(errorHandler);
