@@ -1,12 +1,14 @@
 import { CartModel } from "./models/carts.model.js";
 
+
 export default class CartsDaoMongoDB {
     async getAll() {
         try {
-        const response = await CartModel.find({});
-        return response;
+            const response = await CartModel.find({});
+            return response;
         } catch (error) {
-        console.log(error);
+            console.error('Error al obtener todos los carritos:', error);
+            throw new Error('Error al obtener todos los carritos');
         }
     }
 

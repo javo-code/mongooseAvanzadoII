@@ -3,10 +3,10 @@ import * as service from "../services/carts.service.js";
 
 export const getAllCarts = async (req, res, next) => {
   try {
-    const response = await service.getAll();
-    res.status(200).json(response);
+      const response = await service.getAll();
+      res.status(200).json(response);
   } catch (error) {
-    next(error.message);
+      next(error.message);
   }
 };
 

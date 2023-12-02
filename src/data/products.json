@@ -5,7 +5,7 @@
     "code": "ACC2002",
     "price": 23,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -14,7 +14,7 @@
     "code": "ACC2101",
     "price": 35,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -23,7 +23,7 @@
     "code": "ACC2201",
     "price": 380,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -32,7 +32,7 @@
     "code": "ACC2301",
     "price": 423,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -41,7 +41,7 @@
     "code": "ACC2401",
     "price": 200,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -50,7 +50,7 @@
     "code": "ACC2501",
     "price": 880,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -59,7 +59,7 @@
     "code": "ACC2601",
     "price": 6500,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -68,7 +68,7 @@
     "code": "ACC2701",
     "price": 860,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -77,7 +77,7 @@
     "code": "ACC2801",
     "price": 1300,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "noImgYet."
   },
   {
@@ -86,7 +86,169 @@
     "code": "ACC2901",
     "price": 1970,
     "stock": 10,
-    "category": "Deponsables",
+    "category": "deponsables",
     "thumbnails": "thumbnails/1.png"
+  },
+  {
+    "title": "Médicos generalista",
+    "description": "Proporciona una mirada integral de la población y de sus problemas de salud.",
+    "code": "ACC3000",
+    "price": 10000,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Médicos interconsultores",
+    "description": "Tratamiento del dolor crónico, valoración y el manejo de las diferentes necesidades",
+    "code": "ACC3001",
+    "price": 6000,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Enfermería general",
+    "description": "Promover la salud, prevenir la enfermedad, restaurar la salud y aliviar el sufrimiento.",
+    "code": "ACC3002",
+    "price": 3000,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Psicología",
+    "description": "Ayuda a enfrentar situaciones estresantes y a eliminar los obstáculos que nos impiden alcanzar nuestros objetivos.",
+    "code": "ACC3003",
+    "price": 9000,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Kinesiología",
+    "description": "Prevención, conservación, evaluación, tratamiento y recuperación somatofuncional de las personas.",
+    "code": "ACC3004",
+    "price": 7000,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Estimulación temprana",
+    "description": "Optimiza el desarrollo normal del niño; prevenir la aparición de déficit asociados a un riesgo biológico, psicológico o social.",
+    "code": "ACC3005",
+    "price": 3500,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Psicomotrcista",
+    "description": "Estimula la percepción del entorno, fomenta el aprendizaje y la concentración, fortalece la autoestima infantil.",
+    "code": "ACC3006",
+    "price": 4700,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Fonoaudiología",
+    "description": "Establece o reestablece las habilidades y funciones de la comunicación humana. ",
+    "code": "ACC3007",
+    "price": 6200,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Terapia ocupacional",
+    "description": "Prevención de discapacidades y disfunciones ocupacionales, mejora de la capacidad física e intelectual de los pacientes.",
+    "code": "ACC3008",
+    "price": 3100,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Nutrición",
+    "description": "Un nutricionista te ayuda a conocer cuál es tu necesidad calórica y te enseña cómo lograr un aporte suficiente de vitaminas y minerales.",
+    "code": "ACC3009",
+    "price": 6400,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Asistente social",
+    "description": "El asistente social se encarga de garantizar los derechos humanos y de fomentar la inclusión social.",
+    "code": "ACC3010",
+    "price": 5300,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Acompañante terapéutico",
+    "description": "Favorecer el desarrollo biopsicosocial y/o autovalimiento de la persona asistida.Fortalecer los vínculos familiares y sociales;.",
+    "code": "ACC3011",
+    "price": 4200,
+    "stock": 10,
+    "category": "service",
+    "thumbnails": ""
+  },
+  {
+    "title": "Nutrilon",
+    "description": "pote x 800 grs.",
+    "code": "ACC4000",
+    "price": 17700,
+    "stock": 10,
+    "category": "nutrition",
+    "thumbnails": ""
+  },
+  {
+    "title": "Ensure",
+    "description": "pote x 1000 grs.",
+    "code": "ACC4001",
+    "price": 16900,
+    "stock": 10,
+    "category": "nutrition",
+    "thumbnails": ""
+  },
+  {
+    "title": "Lactoproteyn",
+    "description": "pote x 650 grs.",
+    "code": "ACC4002",
+    "price": 19500,
+    "stock": 10,
+    "category": "nutrition",
+    "thumbnails": ""
+  },
+  {
+    "title": "Alfare",
+    "description": "pote x 870 grs.",
+    "code": "ACC4003",
+    "price": 22000,
+    "stock": 10,
+    "category": "nutrition",
+    "thumbnails": ""
+  },
+  {
+    "title": "Fresubin",
+    "description": "pote x 960 grs.",
+    "code": "ACC4004",
+    "price": 18000,
+    "stock": 10,
+    "category": "nutrition",
+    "thumbnails": ""
+  },
+  {
+    "title": "Alterna",
+    "description": "pote x 900 grs.",
+    "code": "ACC4005",
+    "price": 20000,
+    "stock": 10,
+    "category": "nutrition",
+    "thumbnails": ""
   }
 ]

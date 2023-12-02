@@ -1,5 +1,21 @@
 import ProductDaoMongoDB from "../dao/mongoDB/products.dao.js";
 const prodDao = new ProductDaoMongoDB(); 
+import fs from "fs";
+import { __dirname } from "../utils.js";
+
+const prodsFile = JSON.parse(
+  fs.readFileSync(__dirname + "/data/products.json", "utf-8")
+);
+
+export const createFileProd = async () => {
+  try {
+    const newProd = await prodDao.create(prodsFile);
+    if (!newProd) return false;
+    return { message: "Products array saved sucesfully!" };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getAll = async () => {
   try {
@@ -56,6 +72,17 @@ export const getProductsByLimit = async (limit) => {
     } catch (error) {
         console.log(error);
         throw new Error('Error retrieving products by limit');
+  }
+};
+
+export const addProdToCart = async (userId, prodId) => {
+  try {
+    const exists = await prodDao.getById(prodId);
+    if(!exists) throw new Error('Product does not exist');
+    const newProd = await prodDao.addProdToCart(userId, prodId);
+    return newProd;
+  } catch (error) {
+    console.log(error);
   }
 };
   

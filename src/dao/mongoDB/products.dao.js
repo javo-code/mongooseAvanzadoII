@@ -1,4 +1,5 @@
 import { ProductModel } from "./models/products.model.js";
+import { CartModel } from "./models/carts.model.js";
 
 export default class ProductDaoMongoDB {
     async getAll() {
@@ -55,4 +56,22 @@ export default class ProductDaoMongoDB {
             throw new Error('Error retrieving products by limit');
         }
     }
+
+
+    
+    async addProdToCart(cartId, prodId) {
+        try {
+            const cart = await CartModel.findById(cartId);
+            if (!cart) {
+                throw new Error('Cart does not found');
+            }
+            cart.products.push(prodId);
+    await cart.save();
+    return cart;
+    } catch (error) {
+        console.log(error);
+        throw new Error('Error addi product to cart');
+    }
+}
+
 }

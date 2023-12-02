@@ -1,6 +1,16 @@
 // import { getAll, getById, create, update, remove } from "../services/product.services.js";
 import * as service from "../services/products.services.js";
 
+export const createFileCtr = async (req, res, next) => {
+  try {
+    const newProds = await service.createFileProd();
+    if (!newProds) throw new Error("Validation Error!");
+    else res.json(newProds);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getAllProducts = async (req, res, next) => {
   try {
     const response = await service.getAll();
@@ -62,3 +72,14 @@ export const getProductsByLimit = async (req, res, next) => {
         next(error.message);
     }
 };
+
+export const addProdToCart = async (req, res, next) => {
+  try {
+    const { idUser } = req.params;
+    const { idProd } = req.params;
+    const newProd = await service.addProdToCart(idUser, idProd);
+    res.json(newProd);
+  } catch (error) {
+    next(error)
+  }
+}

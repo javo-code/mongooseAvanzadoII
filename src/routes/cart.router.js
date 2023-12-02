@@ -2,22 +2,22 @@ import { Router } from "express";
 const router = Router();
 
 /* import { productDaoFS } from "../daos/fileSystem/products.dao.js"; */
-import { createCart, deleteCart, getAllCarts, getCartById, updateCart } from "../controllers/carts.controller.js";
+import * as controller from "../controllers/carts.controller.js";
 
 
 //MOSTRAR TODOS LOS PRODUCTOS
-router.get("/", getAllCarts);
+router.get("/all", controller.getAllCarts);
 
 //CREAR PRODUCTO.
-router.post("/", createCart);
+router.post("/", controller.createCart);
 
 //MOSTRAR PRODUCTO POR ID.
-router.get("/:id", getCartById);
+router.get("/:id", controller.getCartById);
 
 //MODIFICAR PRODUCTO.
-router.put("/:id", updateCart);
+router.put("/:id", controller.updateCart);
 
 //ELIMINAR PRODUCTO.
-router.delete("/:id", deleteCart);
+router.delete("/:id", controller.deleteCart);
 
 export default router;
