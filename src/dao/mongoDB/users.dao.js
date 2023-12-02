@@ -94,7 +94,7 @@ export default class UserDaoMongoDB {
 
   async getAllUsers(/* page = 1, limit = 10 */) {
     try {
-      const response = await UserModel.find({}).populate("carts");
+      const response = await UserModel.find({});
       return response;
     } catch (error) {
       console.log(error);

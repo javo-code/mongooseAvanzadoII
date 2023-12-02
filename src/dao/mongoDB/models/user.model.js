@@ -17,8 +17,8 @@ const UserSchema = new Schema({
   }]
 });
 
-UserSchema.pre('find', function(){
+UserSchema.pre('find', function () {
   this.populate('carts')
-})
+});
 
 export const UserModel = model('users', UserSchema); 
