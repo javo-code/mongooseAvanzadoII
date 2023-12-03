@@ -57,7 +57,7 @@ export default class ProductDaoMongoDB {
         }
     }
     
-    async addProdToCart(cartId, prodId) {
+ async addProdToCart(cartId, prodId) {
         try {
             const cart = await CartModel.findById(cartId);
             if (!cart) {
@@ -71,6 +71,7 @@ export default class ProductDaoMongoDB {
             throw new Error('Error adding product to cart');
         }
     }
+    
     async aggregation1() {
         try {
             const response = await ProductModel.aggregate([

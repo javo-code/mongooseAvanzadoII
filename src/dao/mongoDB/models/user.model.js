@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import { Schema, model } from "mongoose";
 import mongoosePaginate from 'mongoose-paginate-v2';
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   first_name: { 
     type: String, 
     required: true,
@@ -11,10 +11,10 @@ const UserSchema = new mongoose.Schema({
   age: { type: Number },
   email:  { type: String, required: true, unique: true },  
   gender:  { type: String, required: true },
-  products:[
+  carts:[
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'products',
+      type: Schema.Types.ObjectId,
+      ref: 'carts',
       default: []
     }
   ]
@@ -23,10 +23,10 @@ const UserSchema = new mongoose.Schema({
 UserSchema.plugin(mongoosePaginate);
 
 UserSchema.pre('find', function(){
-  this.populate('products')
+  this.populate('carts')
 })
 
-export const UserModel = mongoose.model(
+export const UserModel = model(
   'users',
   UserSchema
 ); 

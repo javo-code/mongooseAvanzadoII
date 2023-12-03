@@ -81,7 +81,7 @@ export const addProdToCart = async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-};
+}
 
 export const aggregation1 = async (req, res, next) => {
   try {
