@@ -19,9 +19,9 @@ export const createFileProd = async () => {
   }
 };
 
-export const getAll = async () => {
+export const getAll = async (page, limit) => {
   try {
-    return await prodDao.getAll();
+    return await prodDao.getAll(page, limit);
   } catch (error) {
     console.log(error);
   }
@@ -66,6 +66,7 @@ export const remove = async (id) => {
     console.log(error);
   }
 };
+
 /* revisar */
 export const getProductsByLimit = async (limit) => {
     try {

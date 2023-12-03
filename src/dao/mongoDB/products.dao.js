@@ -2,9 +2,9 @@ import { ProductModel } from "./models/products.model.js";
 import { CartModel } from "./models/carts.model.js";
 
 export default class ProductDaoMongoDB {
-    async getAll() {
+    async getAll(page= 1, limit = 5) {
         try {
-        const response = await ProductModel.find({});
+        const response = await ProductModel.paginate({}, { page, limit });
         return response;
         } catch (error) {
         console.log(error);
@@ -46,6 +46,15 @@ export default class ProductDaoMongoDB {
             console.log(error);
         }
     }
+//CREAR ARCHIVO CON TODOS LOS PRODUCTOS
+    async createProd(obj) {
+        try {
+            const response = await ProductModel.create(obj);
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     async getProductsByLimit(limit) {
         try {
@@ -76,7 +85,7 @@ export default class ProductDaoMongoDB {
         try {
             const response = await ProductModel.aggregate([
             {
-                $match: { category: "nutrition"}
+                $match: { category: "service"}
             },
             {
                 $limit: 5 
@@ -94,15 +103,13 @@ export default class ProductDaoMongoDB {
         try {
             return await ProductModel.aggregate([
                 {
-                    $match: {
-                        price: { $gte: 5000 }
-                    }
-                },
-                {
                     $group: {
-                        _id: '$category',// Definimos a travez de que nos va a grupar los documentos.
-                        average_price: { $avg: "$price"}
-                    }
+                        _id: '$category',// Definimos a travez de que atributo nos va a grupar los documentos.
+                        count: { $sum: 1 }
+                    },/* 
+                    $sort: {
+                        price:
+                    } */
                 }
             ])
         } catch (error) {
@@ -110,4 +117,19 @@ export default class ProductDaoMongoDB {
             throw new Error('Error at aggregation2 - products.dao.js');
         }
     }
+
+// ACTUALIZAR TODOS LOS ARCHIVOS
+  /* async updateManyOnsale() {
+    try {
+      const products = await this.getAllProducts();
+      for (const product of products) {
+        product.age = getRandomNumber();
+        product.save();
+      }
+      return { mesg: "Update products OK" };
+    } catch (error) {
+      console.log(error);
+    }
+  } */
+
 }

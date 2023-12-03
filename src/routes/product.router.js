@@ -7,7 +7,7 @@ import * as controller from "../controllers/products.controller.js";
 
 
 //MOSTRAR TODOS LOS PRODUCTOS
-router.get("/", controller.getAllProducts);
+router.get("/all", controller.getAllProducts);
 
 //CREAR PRODUCTO.
 router.post("/", productValidator, controller.createProduct);

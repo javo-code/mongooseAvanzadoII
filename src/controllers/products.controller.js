@@ -12,10 +12,22 @@ export const createFileCtr = async (req, res, next) => {
 
 export const getAllProducts = async (req, res, next) => {
   try {
-    const response = await service.getAll();
-    res.status(200).json(response);
+    const { page, limit } = req.query;
+    const response = await service.getAll( page, limit );
+    //res.status(200).json(response);
+    const next = response.hasNextPage ? `http://localhost:8080/api/products/all?page=${response.nextPage}` : null;
+    const prev = response.hasPrevPage ? `http://localhost:8080/api/products/all?page=${response.prevPage}` : null;
+    res.json({
+      payload: response.docs,
+      info: {
+        count: response.totalDocs,
+        pages: response.totalPages,
+        next,
+        prev
+      }
+    }) 
   } catch (error) {
-    next(error.message);
+    next(error);
   }
 };
 
