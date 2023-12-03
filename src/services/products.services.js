@@ -101,3 +101,11 @@ export const aggregation1 = async () => {
     console.log(error)
   }
 };
+
+export const aggregation2 = async () => {
+  try {
+    return await prodDao.aggregation2()
+  } catch (error) {
+    console.log(error)
+  }
+};

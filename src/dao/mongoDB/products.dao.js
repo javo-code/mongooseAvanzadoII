@@ -90,4 +90,24 @@ export default class ProductDaoMongoDB {
         }
     }
 
+    async aggregation2() {
+        try {
+            return await ProductModel.aggregate([
+                {
+                    $match: {
+                        price: { $gte: 5000 }
+                    }
+                },
+                {
+                    $group: {
+                        _id: '$category',// Definimos a travez de que nos va a grupar los documentos.
+                        average_price: { $avg: "$price"}
+                    }
+                }
+            ])
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error at aggregation2 - products.dao.js');
+        }
+    }
 }

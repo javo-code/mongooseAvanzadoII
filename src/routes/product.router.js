@@ -30,4 +30,6 @@ router.delete("/:id", controller.deleteProduct);
 // AGGREGATION 1
 router.get("/aggregation1", controller.aggregation1);
 
+// AGGREGATION 2
+router.get("/aggregation2", controller.aggregation2);
 export default router;

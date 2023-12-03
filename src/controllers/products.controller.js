@@ -90,3 +90,12 @@ export const aggregation1 = async (req, res, next) => {
     next(error.message);
   }
 };
+
+export const aggregation2 = async (req, res, next) => {
+  try {
+    const response = await service.aggregation2();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error.message);
+  }
+};
