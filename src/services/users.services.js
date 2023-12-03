@@ -4,7 +4,7 @@ import fs from "fs";
 import { __dirname } from "../utils.js";
 
 const usersFile = JSON.parse(
-  fs.readFileSync(__dirname + "/data/users.json", "utf-8")
+  fs.readFileSync(__dirname + "/data/Users.json", "utf-8")
 );
 
 export const aggregation1 = async(gender) =>{
@@ -36,7 +36,7 @@ export const createFileUser = async () => {
   try {
     const newUser = await userDao.createUser(usersFile);
     if (!newUser) return false;
-    return { message: "Users array saved sucesfully!" };
+    return { message: "¡Users saved successfully!" };
   } catch (error) {
     console.log(error);
   }
@@ -73,9 +73,9 @@ export const getByEmailUser = async (email) => {
   }
 };
 
-export const getAllUsers = async (page, limit) => {
+export const getAllUsers = async (/* page, limit */) => {
   try {
-    const item = await userDao.getAllUsers(page, limit);
+    const item = await userDao.getAllUsers(/* page, limit */);
     if (!item) throw new Error("User not found!");
     else return item;
   } catch (error) {

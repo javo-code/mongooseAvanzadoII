@@ -1,4 +1,3 @@
-// import { getAll, getById, create, update, remove } from "../services/product.services.js";
 import * as service from "../services/carts.service.js";
 
 export const getAllCarts = async (req, res, next) => {

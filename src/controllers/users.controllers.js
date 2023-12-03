@@ -74,8 +74,8 @@ export const getByEmailCtr = async (req, res, next) => {
 
 export const getAllCtr = async (req, res, next) => {
   try {
-    const { page, limit } = req.query;
-    const response = await service.getAllUsers(page, limit);
+    const { /* page, limit */ } = req.query;
+    const response = await service.getAllUsers(/* page, limit */);
     res.json(response);
     // const next = response.hasNextPage ? `http://localhost:8080/users/all?page=${response.nextPage}` : null;
     // const prev = response.hasPrevPage ? `http://localhost:8080/users/all?page=${response.prevPage}` : null;

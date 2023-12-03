@@ -85,4 +85,11 @@ export const addProdToCart = async (cartId, prodId) => {
     console.log(error);
   }
 };
-  
+
+export const aggregation1 = async () => {
+  try {
+    return await prodDao.aggregation1()
+  } catch (error) {
+    console.log(error)
+  }
+};

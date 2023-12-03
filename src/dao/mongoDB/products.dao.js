@@ -71,4 +71,22 @@ export default class ProductDaoMongoDB {
             throw new Error('Error adding product to cart');
         }
     }
+    async aggregation1() {
+        try {
+            const response = await ProductModel.aggregate([
+            {
+                $match: { category: "nutrition"}
+            },
+            {
+                $limit: 5 
+            }
+            ]);
+            
+            return response;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error at aggregation1 - products.dao.js');
+        }
+    }
+
 }

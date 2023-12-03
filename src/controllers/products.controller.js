@@ -1,4 +1,3 @@
-// import { getAll, getById, create, update, remove } from "../services/product.services.js";
 import * as service from "../services/products.services.js";
 
 export const createFileCtr = async (req, res, next) => {
@@ -82,4 +81,13 @@ export const addProdToCart = async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-}
+};
+
+export const aggregation1 = async (req, res, next) => {
+  try {
+    const response = await service.aggregation1();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error.message);
+  }
+};

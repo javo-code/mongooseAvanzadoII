@@ -19,12 +19,15 @@ router.post('/file', controller.createFileCtr);
 router.post("/add/:idCart/:idProd", controller.addProdToCart)
 
 //MOSTRAR PRODUCTO POR ID.
-router.get("/:id", controller.getProductById);
+router.get("/id/:id", controller.getProductById);
 
 //MODIFICAR PRODUCTO.
 router.put("/:id", controller.updateProduct);
 
 //ELIMINAR PRODUCTO.
 router.delete("/:id", controller.deleteProduct);
+
+// AGGREGATION 1
+router.get("/aggregation1", controller.aggregation1);
 
 export default router;

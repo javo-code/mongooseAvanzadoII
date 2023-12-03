@@ -2,7 +2,6 @@ import { getRandomNumber } from "../../utils.js";
 import { UserModel } from "./models/user.model.js";
 
 export default class UserDaoMongoDB {
-
   async aggregation1(gender) {
     try {
       return await UserModel.aggregate([
@@ -62,12 +61,12 @@ export default class UserDaoMongoDB {
     } catch (error) {
       console.log(error);
     }
-  } 
+  }
 
   async getUserByName(name) {
     try {
-      const response = await UserModel.find({ first_name: name });/* .explain() */;
-      return response/* .executionStats */;
+      const response = await UserModel.find({ first_name: name }).explain();
+      return response.executionStats;
     } catch (error) {
       console.log(error);
     }
@@ -75,26 +74,25 @@ export default class UserDaoMongoDB {
 
   async getUserByEmail(email) {
     try {
-      const response = await UserModel.find({ email: email })/* .explain() */;
-      return response/* .executionStats */;
-    } catch (error) {
-      console.log(error);
-    }
-  } 
-
-
-  async getUserById(id) {
-    try {
-      const response = await UserModel.findById(id);
-      return response
+      const response = await UserModel.find({ email: email }).explain();
+      return response.executionStats;
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getAllUsers(/* page = 1, limit = 10 */) {
+  async getUserById(id) {
     try {
-      const response = await UserModel.find({});
+      const response = await UserModel.findById(id).populate("products");
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getAllUsers(page = 1, limit = 10) {
+    try {
+      const response = await UserModel.paginate({}, { page, limit });
       return response;
     } catch (error) {
       console.log(error);
