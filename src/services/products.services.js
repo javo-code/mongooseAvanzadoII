@@ -2,6 +2,8 @@ import ProductDaoMongoDB from "../dao/mongoDB/products.dao.js";
 const prodDao = new ProductDaoMongoDB(); 
 import fs from "fs";
 import { __dirname } from "../utils.js";
+import { ProductModel } from "../dao/mongoDB/models/products.model.js";
+import { CartModel } from "../dao/mongoDB/models/carts.model.js";
 
 const prodsFile = JSON.parse(
   fs.readFileSync(__dirname + "/data/products.json", "utf-8")
@@ -77,12 +79,18 @@ export const getProductsByLimit = async (limit) => {
 
 export const addProdToCart = async (cartId, prodId) => {
   try {
-    const exists = await prodDao.getById(prodId);
-    if(!exists) throw new Error('Product does not exist');
-    const newProd = await prodDao.addProdToCart(cartId, prodId);
-    return newProd;
+    const prod = await ProductModel.findById(prodId);
+    if (!prod) {
+      throw new Error('Product not found');
+    }
+    const cart = await CartModel.findByIdAndUpdate(cartId, { $push: { products: prodId } });
+    if (!cart) {
+      throw new Error('cart not found');
+    }
+    return cart;
   } catch (error) {
-    console.log(error);
+    console.error('Error adding product to cart:', error);
+    throw new Error('Error adding product to cart');
   }
 };
 

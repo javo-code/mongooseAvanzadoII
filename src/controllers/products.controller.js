@@ -74,12 +74,11 @@ export const getProductsByLimit = async (req, res, next) => {
 
 export const addProdToCart = async (req, res, next) => {
   try {
-    const { idCart } = req.params;
-    const { idProd } = req.params;
+    const { idCart, idProd } = req.params;
     const newProd = await service.addProdToCart(idCart, idProd);
-    res.json(newProd);
+    res.status(200).json(newProd);
   } catch (error) {
-    next(error)
+    next(error.message);
   }
 }
 

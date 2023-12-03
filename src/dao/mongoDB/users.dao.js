@@ -65,8 +65,8 @@ export default class UserDaoMongoDB {
 
   async getUserByName(name) {
     try {
-      const response = await UserModel.find({ first_name: name }).explain();
-      return response.executionStats;
+      const response = await UserModel.find({ first_name: name })/* .explain() */;
+      return response/* .executionStats */;
     } catch (error) {
       console.log(error);
     }
@@ -74,8 +74,8 @@ export default class UserDaoMongoDB {
 
   async getUserByEmail(email) {
     try {
-      const response = await UserModel.find({ email: email }).explain();
-      return response.executionStats;
+      const response = await UserModel.find({ email: email })/* .explain() */;
+      return response/* .executionStats */;
     } catch (error) {
       console.log(error);
     }
@@ -83,7 +83,7 @@ export default class UserDaoMongoDB {
 
   async getUserById(id) {
     try {
-      const response = await UserModel.findById(id).populate("products");
+      const response = await UserModel.findById(id).strictPopulate("carts");
       return response;
     } catch (error) {
       console.log(error);
