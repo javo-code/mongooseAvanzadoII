@@ -15,15 +15,19 @@ export const getAllProducts = async (req, res, next) => {
     const { page, limit } = req.query;
     const response = await service.getAll( page, limit );
     //res.status(200).json(response);
-    const next = response.hasNextPage ? `http://localhost:8080/api/products/all?page=${response.nextPage}` : null;
-    const prev = response.hasPrevPage ? `http://localhost:8080/api/products/all?page=${response.prevPage}` : null;
+    const nextPage = response.hasNextPage ? `http://localhost:8080/api/products/all?page=${response.nextPage}` : null;
+    const prevPage = response.hasPrevPage ? `http://localhost:8080/api/products/all?page=${response.prevPage}` : null;
+    const status = response ? "success" : "error";
     res.json({
       payload: response.docs,
       info: {
-        count: response.totalDocs,
-        pages: response.totalPages,
-        next,
-        prev
+        status ,
+        totalPages: response.totalPages,
+        page: response.page,
+        hasNextPage: response.hasNextPage,
+        hasPrevPage: response.hasPrevPage,
+        nextPage,
+        prevPage
       }
     }) 
   } catch (error) {
@@ -129,30 +133,11 @@ export const getPromotions = async (req, res, next) => {
     next(error.message);
   }
 };
-
-export const sortAsc = async (req, res, next) => {
-  try {
-    const response = await service.sortAsc();
-    res.status(200).json(response);
-  } catch (error) {
-    next(error.message);
-  }
-};
-
-export const sortDesc = async (req, res, next) => {
-  try {
-    const response = await service.sortDesc();
-    res.status(200).json(response);
-  } catch (error) {
-    next(error.message);
-  }
-};
-
+// ARDENAR POR PRECIO
 export const orderByPrice = async (req, res, next) => {
   try {
     const { order } = req.query;
-    
-    if (order === 'asc') {
+    if (!order) {
       const response = await service.sortAsc('asc');
       res.status(200).json(response);
     } else if (order === 'desc') {
@@ -160,7 +145,7 @@ export const orderByPrice = async (req, res, next) => {
       res.status(200).json(response);
     } else {
 
-      res.status(400).json({ msg: "Invalid 'order' value. Use 'asc' or 'desc'." });
+      res.status(400).json({ msg: "Error in orderByPrice - porducts.controller.js" });
     }
   } catch (error) {
     next(error.message);

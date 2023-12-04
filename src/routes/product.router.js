@@ -39,12 +39,6 @@ router.get("/quantityByCategory", controller.quantityByCategory);
 // AGGREGATION 3.
 router.get("/getPromotions", controller.getPromotions);
 
-// ORDEN POR PRECIO - ASCENDENTE
-router.get('/sortAsc', controller.sortAsc);
-
-// ORDEN POR PRECIO - DESCENDENTE
-router.get('/sortDesc', controller.sortDesc);
-
 // ORDEN POR PRECIO - DESCENDENTE
 router.get('/orderByPrice', controller.orderByPrice);
 

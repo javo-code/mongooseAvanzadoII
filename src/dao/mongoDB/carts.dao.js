@@ -1,5 +1,4 @@
 import { CartModel } from "./models/carts.model.js";
-import { UserModel } from "./models/user.model.js";
 
 
 export default class CartsDaoMongoDB {
@@ -48,21 +47,5 @@ export default class CartsDaoMongoDB {
             console.log(error);
         }
     }
-
-/*     AGREGAR CARRITOS AL USUARIO - VER VALIDACIONES */
-async addCartToUser(userId, cartId) {
-        try {
-            const user = await UserModel.findById(userId);
-            if (!user) {
-                throw new Error('User does not found');
-            }
-            user.carts.push(cartId);
-            await user.save();
-            return user;
-        } catch (error) {
-            console.log(error);
-            throw new Error('Error adding cart to user');
-        }
-        } 
 }
 

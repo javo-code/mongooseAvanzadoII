@@ -174,7 +174,7 @@ export default class ProductDaoMongoDB {
         try {
             const products = await this.getAll();
             for (const product of products) {
-                product.onSale = true;
+                product.onsale = true;
                 product.save();
         }
             return { msg: "Update products OK" };

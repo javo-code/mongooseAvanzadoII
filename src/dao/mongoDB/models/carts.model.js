@@ -3,11 +3,6 @@ import { Schema, model } from "mongoose";
 const CartCollectionName = 'carts'
 
 export const cartSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'users',
-    default:[]
-  },
 
   products:[
     {

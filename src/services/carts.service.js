@@ -1,6 +1,5 @@
 import CartDaoMongoDB from "../dao/mongoDB/carts.dao.js";
 import { CartModel } from "../dao/mongoDB/models/carts.model.js";
-import { UserModel } from "../dao/mongoDB/models/user.model.js";
 const cartDao = new CartDaoMongoDB(); 
 
 import fs from "fs";
@@ -74,19 +73,3 @@ export const remove = async (id) => {
   }
 };
 
-export const addCartToUser = async (userId, cartId) => {
-  try {
-    const cart = await CartModel.findById(cartId);
-    if (!cart) {
-      throw new Error('Cart not found');
-    }
-    const user = await UserModel.findByIdAndUpdate(userId, { $push: { carts: cartId } });
-    if (!user) {
-      throw new Error('User not found');
-    }
-    return user;
-  } catch (error) {
-    console.error('Error adding cart to user:', error);
-    throw new Error('Error adding cart to user');
-  }
-};
