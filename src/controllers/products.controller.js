@@ -78,16 +78,6 @@ export const deleteProduct = async (req, res, next) => {
   }
 };
 
-export const getProductsByLimit = async (req, res, next) => {
-    try {
-        const { limit } = req.query;
-        const response = await service.getProductsByLimit(parseInt(limit));
-        res.status(200).json(response);
-    } catch (error) {
-        next(error.message);
-    }
-};
-
 export const addProdToCart = async (req, res, next) => {
   try {
     const { idCart, idProd } = req.params;

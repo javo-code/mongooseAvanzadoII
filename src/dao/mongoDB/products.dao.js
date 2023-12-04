@@ -55,18 +55,8 @@ export default class ProductDaoMongoDB {
             console.log(error);
         }
     }
-
-    async getProductsByLimit(limit) {
-        try {
-            const response = await ProductModel.find({});
-            return response;
-        } catch (error) {
-            console.log(error);
-            throw new Error('Error retrieving products by limit');
-        }
-    }
     
- async addProdToCart(cartId, prodId) {
+async addProdToCart(cartId, prodId) {
         try {
             const cart = await CartModel.findById(cartId);
             if (!cart) {

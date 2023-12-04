@@ -6,7 +6,7 @@ import { productValidator } from "../middleware/productValidator.js";
 import * as controller from "../controllers/products.controller.js";
 
 
-//MOSTRAR TODOS LOS PRODUCTOS
+//MOSTRAR TODOS LOS PRODUCTOS - LIMIT / PAGINATE
 router.get("/all", controller.getAllProducts);
 
 //CREAR PRODUCTO.

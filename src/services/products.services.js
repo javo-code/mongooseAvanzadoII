@@ -67,17 +67,6 @@ export const remove = async (id) => {
   }
 };
 
-/* revisar */
-export const getProductsByLimit = async (limit) => {
-    try {
-        const products = await prodDao.getProductsByLimit(limit);
-        return products;
-    } catch (error) {
-        console.log(error);
-        throw new Error('Error retrieving products by limit');
-  }
-};
-
 export const addProdToCart = async (cartId, prodId) => {
   try {
     const prod = await ProductModel.findById(prodId);
@@ -138,14 +127,6 @@ export const sortAsc = async(order) => {
 export const sortDesc = async(order) => {
   try {
     return await prodDao.sortDesc(order);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export const orderByPrice = async() => {
-  try {
-    return await prodDao.orderByPrice();
   } catch (error) {
     console.log(error);
   }
