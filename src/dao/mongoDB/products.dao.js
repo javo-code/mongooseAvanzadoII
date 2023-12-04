@@ -170,8 +170,7 @@ async addProdToCart(cartId, prodId) {
             return { msg: "Update products OK" };
         } catch (error) {
             console.log(error);
-             throw new Error('Error at updateManyOnsale - products.dao.js');
+            throw new Error('Error at updateManyOnsale - products.dao.js');
         }
     }
-
 }

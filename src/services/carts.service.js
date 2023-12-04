@@ -1,5 +1,4 @@
 import CartDaoMongoDB from "../dao/mongoDB/carts.dao.js";
-import { CartModel } from "../dao/mongoDB/models/carts.model.js";
 const cartDao = new CartDaoMongoDB(); 
 
 import fs from "fs";
@@ -73,3 +72,11 @@ export const remove = async (id) => {
   }
 };
 
+  export const deleteFromCart = async (cartId, productId) => {
+    try {
+      const updatedCart = await cartDao.deleteFromCart(cartId, productId);  
+      return updatedCart;
+    } catch (error) {
+      throw new Error('Error deleting product from cart in service');
+    }
+};

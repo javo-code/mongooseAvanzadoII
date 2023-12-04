@@ -63,3 +63,12 @@ export const addCartToUser = async (req, res, next) => {
     next(error.message);
   }
 };
+
+export const deleteFromCart = async (req, res, next) => {
+  try {
+    const response = await service.deleteFromCart();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error.message);
+  }
+};

@@ -122,6 +122,7 @@ export const getPromotions = async (req, res, next) => {
   } catch (error) {
     next(error.message);
   }
+
 };
 // ARDENAR POR PRECIO
 export const orderByPrice = async (req, res, next) => {
