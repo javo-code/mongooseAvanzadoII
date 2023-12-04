@@ -27,9 +27,26 @@ router.put("/:id", controller.updateProduct);
 //ELIMINAR PRODUCTO.
 router.delete("/:id", controller.deleteProduct);
 
-// AGGREGATION 1
-router.get("/aggregation1", controller.aggregation1);
+// ACTUALIZACION MASIVA DE DOCUMENTOS - AGREGO PROPIEDAD "ONSALE".
+router.put('/updatedocs', controller.updateManyOnsale);
 
-// AGGREGATION 2
-router.get("/aggregation2", controller.aggregation2);
+// AGGREGATION 1.
+router.get("/firstFiveByCategory", controller.firstFiveByCategory);
+
+// AGGREGATION 2.
+router.get("/quantityByCategory", controller.quantityByCategory);
+
+// AGGREGATION 3.
+router.get("/getPromotions", controller.getPromotions);
+
+// ORDEN POR PRECIO - ASCENDENTE
+router.get('/sortAsc', controller.sortAsc);
+
+// ORDEN POR PRECIO - DESCENDENTE
+router.get('/sortDesc', controller.sortDesc);
+
+// ORDEN POR PRECIO - DESCENDENTE
+router.get('/orderByPrice', controller.orderByPrice);
+
+
 export default router;

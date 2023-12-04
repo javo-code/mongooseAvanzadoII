@@ -6,7 +6,8 @@
     "price": 23,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": true
   },
   {
     "title": "Aguja",
@@ -15,7 +16,8 @@
     "price": 35,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": false
   },
   {
     "title": "Gasa Tejida",
@@ -24,7 +26,8 @@
     "price": 380,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": true
   },
   {
     "title": "Gasa No Tejida",
@@ -33,7 +36,8 @@
     "price": 423,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": false
   },
   {
     "title": "Venda",
@@ -42,7 +46,8 @@
     "price": 200,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": false
   },
   {
     "title": "Solución Fisiologica",
@@ -51,7 +56,8 @@
     "price": 880,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": false
   },
   {
     "title": "Guantes",
@@ -60,7 +66,8 @@
     "price": 6500,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": true
   },
   {
     "title": "Alcohol Medicinal",
@@ -69,7 +76,8 @@
     "price": 860,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": false
   },
   {
     "title": "Alcohol en Gel",
@@ -78,7 +86,8 @@
     "price": 1300,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "noImgYet."
+    "thumbnails": "noImgYet.",
+    "onsale": false
   },
   {
     "title": "Bata de Cirugia",
@@ -87,7 +96,8 @@
     "price": 1970,
     "stock": 10,
     "category": "deponsables",
-    "thumbnails": "thumbnails/1.png"
+    "thumbnails": "thumbnails/1.png",
+    "onsale": false
   },
   {
     "title": "Médicos generalista",
@@ -96,7 +106,8 @@
     "price": 10000,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Médicos interconsultores",
@@ -105,7 +116,8 @@
     "price": 6000,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Enfermería general",
@@ -114,7 +126,8 @@
     "price": 3000,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Psicología",
@@ -123,7 +136,8 @@
     "price": 9000,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": true
   },
   {
     "title": "Kinesiología",
@@ -132,7 +146,8 @@
     "price": 7000,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Estimulación temprana",
@@ -141,7 +156,8 @@
     "price": 3500,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Psicomotrcista",
@@ -150,7 +166,8 @@
     "price": 4700,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Fonoaudiología",
@@ -159,7 +176,8 @@
     "price": 6200,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": true
   },
   {
     "title": "Terapia ocupacional",
@@ -168,7 +186,8 @@
     "price": 3100,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Nutrición",
@@ -186,7 +205,8 @@
     "price": 5300,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": true
   },
   {
     "title": "Acompañante terapéutico",
@@ -195,7 +215,8 @@
     "price": 4200,
     "stock": 10,
     "category": "service",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Nutrilon",
@@ -204,7 +225,8 @@
     "price": 17700,
     "stock": 10,
     "category": "nutrition",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Ensure",
@@ -213,7 +235,8 @@
     "price": 16900,
     "stock": 10,
     "category": "nutrition",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Lactoproteyn",
@@ -222,7 +245,8 @@
     "price": 19500,
     "stock": 10,
     "category": "nutrition",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": true
   },
   {
     "title": "Alfare",
@@ -231,7 +255,8 @@
     "price": 22000,
     "stock": 10,
     "category": "nutrition",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Fresubin",
@@ -240,7 +265,8 @@
     "price": 18000,
     "stock": 10,
     "category": "nutrition",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   },
   {
     "title": "Alterna",
@@ -249,6 +275,7 @@
     "price": 20000,
     "stock": 10,
     "category": "nutrition",
-    "thumbnails": ""
+    "thumbnails": "",
+    "onsale": false
   }
 ]

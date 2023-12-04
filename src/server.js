@@ -29,7 +29,6 @@ app.use('/api/carts', cartRouter);
 app.use('/api/chat', chatRouter);
 app.use('/api/users', usersRouter);
 
-
 app.use(errorHandler);
 
 app.engine("handlebars", handlebars.engine());

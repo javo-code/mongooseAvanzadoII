@@ -94,19 +94,74 @@ export const addProdToCart = async (req, res, next) => {
   }
 }
 
-export const aggregation1 = async (req, res, next) => {
+export const firstFiveByCategory = async (req, res, next) => {
   try {
-    const response = await service.aggregation1();
+    const response = await service.firstFiveByCategory();
     res.status(200).json(response);
   } catch (error) {
     next(error.message);
   }
 };
 
-export const aggregation2 = async (req, res, next) => {
+export const quantityByCategory = async (req, res, next) => {
   try {
-    const response = await service.aggregation2();
+    const response = await service.quantityByCategory();
     res.status(200).json(response);
+  } catch (error) {
+    next(error.message);
+  }
+};
+
+export const updateManyOnsale = async (req, res, next) => {
+  try {
+    const response = await service.updateManyOnsale();
+    res.json(response);
+  } catch (error) {
+    next(error)
+  }
+};
+
+export const getPromotions = async (req, res, next) => {
+  try {
+    const response = await service.getPromotions();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error.message);
+  }
+};
+
+export const sortAsc = async (req, res, next) => {
+  try {
+    const response = await service.sortAsc();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error.message);
+  }
+};
+
+export const sortDesc = async (req, res, next) => {
+  try {
+    const response = await service.sortDesc();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error.message);
+  }
+};
+
+export const orderByPrice = async (req, res, next) => {
+  try {
+    const { order } = req.query;
+    
+    if (order === 'asc') {
+      const response = await service.sortAsc('asc');
+      res.status(200).json(response);
+    } else if (order === 'desc') {
+      const response = await service.sortDesc('desc');
+      res.status(200).json(response);
+    } else {
+
+      res.status(400).json({ msg: "Invalid 'order' value. Use 'asc' or 'desc'." });
+    }
   } catch (error) {
     next(error.message);
   }

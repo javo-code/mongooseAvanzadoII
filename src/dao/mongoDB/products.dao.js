@@ -2,7 +2,7 @@ import { ProductModel } from "./models/products.model.js";
 import { CartModel } from "./models/carts.model.js";
 
 export default class ProductDaoMongoDB {
-    async getAll(page= 1, limit = 5) {
+    async getAll(page= 1, limit = 10) {
         try {
         const response = await ProductModel.paginate({}, { page, limit });
         return response;
@@ -58,7 +58,7 @@ export default class ProductDaoMongoDB {
 
     async getProductsByLimit(limit) {
         try {
-            const response = await ProductModel.find({}).limit(limit);
+            const response = await ProductModel.find({});
             return response;
         } catch (error) {
             console.log(error);
@@ -81,7 +81,8 @@ export default class ProductDaoMongoDB {
         }
     }
     
-    async aggregation1() {
+    // AGREGATION-1
+    async firstFiveByCategory() {
         try {
             const response = await ProductModel.aggregate([
             {
@@ -95,41 +96,92 @@ export default class ProductDaoMongoDB {
             return response;
         } catch (error) {
             console.log(error);
-            throw new Error('Error at aggregation1 - products.dao.js');
+            throw new Error('Error at firstFiveByCategory - products.dao.js');
         }
     }
-
-    async aggregation2() {
+    
+    // AGREGATION-2
+    async quantityByCategory() {
         try {
             return await ProductModel.aggregate([
                 {
                     $group: {
                         _id: '$category',// Definimos a travez de que atributo nos va a grupar los documentos.
                         count: { $sum: 1 }
-                    },/* 
-                    $sort: {
-                        price:
-                    } */
+                    }
                 }
             ])
         } catch (error) {
             console.log(error);
-            throw new Error('Error at aggregation2 - products.dao.js');
+            throw new Error('Error at quantityByCategory - products.dao.js');
+        }
+    }
+    
+    // AGREGATION-3
+    async getPromotions() {
+        try {
+            return await ProductModel.aggregate([
+                {
+                    $match: {onsale: true}
+                },
+                {
+                    $group: {
+                        _id: '$onsale',// Definimos a travez de que atributo nos va a grupar los documentos.
+                        count: { $sum: 1 }
+                    }
+                }
+            ])
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error at getPromotions - products.dao.js');
         }
     }
 
-// ACTUALIZAR TODOS LOS ARCHIVOS
-  /* async updateManyOnsale() {
+    
+        // ORDENAR DE FORMA ASCENDENTE
+ async sortAsc() {
     try {
-      const products = await this.getAllProducts();
-      for (const product of products) {
-        product.age = getRandomNumber();
-        product.save();
-      }
-      return { mesg: "Update products OK" };
-    } catch (error) {
-      console.log(error);
+        const resultadoOrdenado = await ProductModel.aggregate([
+            {
+                $sort: { price: 1 }
+            }
+        ]);
+        return resultadoOrdenado;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error at sortAsc - products.dao.js');
+        }
     }
-  } */
+
+        // ORDENAR DE FORMA DESCENDENTE
+    async sortDesc() {
+    try {
+        const resultadoOrdenado = await ProductModel.aggregate([
+            {
+                $sort: { price: -1 }
+            }
+        ]);
+        return resultadoOrdenado;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error at sortDesc - products.dao.js');
+        }
+    }
+
+    
+    // ACTUALIZAR TODOS LOS ARCHIVOS
+    async updateManyOnsale() {
+        try {
+            const products = await this.getAll();
+            for (const product of products) {
+                product.onSale = true;
+                product.save();
+        }
+            return { msg: "Update products OK" };
+        } catch (error) {
+            console.log(error);
+             throw new Error('Error at updateManyOnsale - products.dao.js');
+        }
+    }
 
 }

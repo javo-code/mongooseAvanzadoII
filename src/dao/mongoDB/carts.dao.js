@@ -5,7 +5,7 @@ import { UserModel } from "./models/user.model.js";
 export default class CartsDaoMongoDB {
     async getAll() {
         try {
-            const response = await CartModel.find({});
+            const response = await CartModel.find({}).populate('products');
             return response;
         } catch (error) {
             console.error('Error al obtener todos los carritos:', error);
@@ -15,7 +15,7 @@ export default class CartsDaoMongoDB {
 
     async getById(id) {
         try {
-            const response = await CartModel.findById(id);
+            const response = await CartModel.findById(id).populate('products');
             return response;
         } catch (error) {
             console.log(error);

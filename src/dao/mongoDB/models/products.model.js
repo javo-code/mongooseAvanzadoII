@@ -10,7 +10,8 @@ export const productSchema = new Schema({
     price: { type: Number, required: true, index: true},
     stock: { type: Number, required: true},
     category: { type: String, required: true, index: true},
-    thumbnails: { type: String }
+    thumbnails: { type: String },
+    onsale: { type: Boolean, default: false, index: true}
 });
 
 productSchema.plugin(mongoosePaginate);

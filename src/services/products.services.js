@@ -95,18 +95,58 @@ export const addProdToCart = async (cartId, prodId) => {
   }
 };
 
-export const aggregation1 = async () => {
+export const firstFiveByCategory = async () => {
   try {
-    return await prodDao.aggregation1()
+    return await prodDao.firstFiveByCategory();
   } catch (error) {
     console.log(error)
   }
 };
 
-export const aggregation2 = async () => {
+export const quantityByCategory = async () => {
   try {
-    return await prodDao.aggregation2()
+    return await prodDao.quantityByCategory();
   } catch (error) {
     console.log(error)
   }
 };
+
+export const getPromotions = async () => {
+  try {
+    return await prodDao.getPromotions();
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export const updateManyOnsale = async() => {
+  try {
+    return await prodDao.updateManyOnsale();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const sortAsc = async(order) => {
+  try {
+    return await prodDao.sortAsc(order);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const sortDesc = async(order) => {
+  try {
+    return await prodDao.sortDesc(order);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const orderByPrice = async() => {
+  try {
+    return await prodDao.orderByPrice();
+  } catch (error) {
+    console.log(error);
+  }
+}
