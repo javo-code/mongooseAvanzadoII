@@ -42,5 +42,4 @@ router.get("/getPromotions", controller.getPromotions);
 // ORDEN POR PRECIO - DESCENDENTE
 router.get('/orderByPrice', controller.orderByPrice);
 
-
 export default router;

@@ -40,25 +40,6 @@ export default class CartsDaoMongoDB {
         }
     }
 
-    async deleteFromCart(cartId, prodId) {
-        try {
-            const cart = await CartModel.findById(cartId);
-            if (!cart) {
-            throw new Error('Cart not found');
-            }
-            const productInCart = cart.products.findById(prodId);
-            if (!productInCart) {
-            throw new Error('Product not found in the cart');
-            }
-            cart.products.findByIdAndDelete(prodId);;
-            const updatedCart = await cart.save();
-            return updatedCart;
-        } catch (error) {
-            console.error(error);
-            throw new Error('Error removing product from cart');
-        }
-        }
-
     async delete(id) {
         try {
             return await CartModel.findByIdAndDelete(id);
@@ -66,4 +47,22 @@ export default class CartsDaoMongoDB {
             console.log(error);
         }
     }    
+    
+    async deleteFromCart(cartId, prodId) {
+        try {
+            const cart = await CartModel.findById(cartId);
+            if (!cart) {
+            } 
+            const productIndex = cart.products.findIndex(product => product.toString() === prodId);
+            if (productIndex === -1) {
+            throw new Error('Product not found in the cart');
+            } console.log(productIndex)
+            cart.products.splice(productIndex, 1);
+            const updatedCart = await cart.save();
+            return updatedCart;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 }

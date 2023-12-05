@@ -66,7 +66,8 @@ export const addCartToUser = async (req, res, next) => {
 
 export const deleteFromCart = async (req, res, next) => {
   try {
-    const response = await service.deleteFromCart();
+    const { cartId, productId } = req.params;
+    const response = await service.deleteFromCart(cartId, productId);
     res.status(200).json(response);
   } catch (error) {
     next(error.message);

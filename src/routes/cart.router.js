@@ -20,10 +20,7 @@ router.put("/:id", controller.updateCart);
 //ELIMINAR CARRITO.
 router.delete("/:id", controller.deleteCart);
 
-//AGRGAR CARRITO AL USUARIO.
-router.post("/add/:userId/:cartId", controller.addCartToUser);
-
 // ELIMINAR PORDUCTO DESDE EL CARRITO
-router.get('/deleteFromCart', controller.deleteFromCart);
+router.delete('/deleteFromCart/:cartId/:productId', controller.deleteFromCart);
 
 export default router;

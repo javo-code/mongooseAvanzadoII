@@ -1,5 +1,6 @@
 import CartDaoMongoDB from "../dao/mongoDB/carts.dao.js";
 const cartDao = new CartDaoMongoDB(); 
+import { CartModel } from "../dao/mongoDB/models/carts.model.js";
 
 import fs from "fs";
 import { __dirname } from "../utils.js";
@@ -21,6 +22,7 @@ export const createFileCart = async () => {
     return { message: "Carts array saved sucesfully!" };
   } catch (error) {
     console.log(error);
+    throw new Error('Error at createFileCart - service');
   }
 };
 
@@ -29,6 +31,7 @@ export const getAll = async () => {
     return await cartDao.getAll();
   } catch (error) {
     console.log(error);
+    throw new Error('Error at getAll - service');
   }
 };
 
@@ -39,6 +42,7 @@ export const getById = async (id) => {
     else return cart;
   } catch (error) {
     console.log(error);
+    throw new Error('Error at getById - service');
   }
 };
 
@@ -49,6 +53,7 @@ export const create = async (obj) => {
     else return newCart;
   } catch (error) {
     console.log(error);
+    throw new Error('Error at create - service');
   }
 };
 
@@ -59,24 +64,39 @@ export const update = async (id, obj) => {
     else return cartUpd;
   } catch (error) {
     console.log(error);
+    throw new Error('Error at update - service');
   }
 };
 
-export const remove = async (id) => {
+export const  remove = async (id) => {
   try {
     const cartDel = await cartDao.delete(id);
     if (!cartDel) return false;
     else return cartDel;
   } catch (error) {
     console.log(error);
+    throw new Error('Error at remove - service');
   }
 };
 
-  export const deleteFromCart = async (cartId, productId) => {
-    try {
-      const updatedCart = await cartDao.deleteFromCart(cartId, productId);  
-      return updatedCart;
-    } catch (error) {
-      throw new Error('Error deleting product from cart in service');
-    }
+export const deleteFromCart = async (cartId, prodId) => {
+  try {
+    const cart = await CartModel.findById(cartId);
+            if (!cart) {
+            throw new Error('Cart not found');
+            
+          } console.log(cart);
+            const productIndex = cart.products.findIndex(product => product.toString() === prodId);
+            if (productIndex === -1) {
+            throw new Error('Product not found in the cart');
+            }console.log(productIndex)
+
+            cart.products.splice(productIndex, 1);
+            const updatedCart = await cart.save();
+            return updatedCart;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error at deleteFromCart - service');
+  }
 };
+
