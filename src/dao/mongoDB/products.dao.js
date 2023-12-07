@@ -1,5 +1,4 @@
 import { ProductModel } from "./models/products.model.js";
-import { CartModel } from "./models/carts.model.js";
 
 export default class ProductDaoMongoDB {
     async getAll(page= 1, limit = 10) {
@@ -55,22 +54,7 @@ export default class ProductDaoMongoDB {
             console.log(error);
         }
     }
-    
-async addProdToCart(cartId, prodId) {
-        try {
-            const cart = await CartModel.findById(cartId);
-            if (!cart) {
-                throw new Error('Cart does not found');
-            }
-            cart.products.push(prodId);
-            await cart.save();
-            return cart;
-        } catch (error) {
-            console.log(error);
-            throw new Error('Error adding product to cart');
-        }
-    }
-    
+        
     // AGREGATION-1
     async firstFiveByCategory() {
         try {

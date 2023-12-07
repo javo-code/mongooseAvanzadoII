@@ -96,7 +96,7 @@ export const firstFiveByCategory = async (req, res, next) => {
     next(error.message);
   }
 };
-
+// query, el tipo de elemento que quiero buscar en caso de no recibir query, realizar la búsqueda general
 export const quantityByCategory = async (req, res, next) => {
   try {
     const response = await service.quantityByCategory();
@@ -105,6 +105,7 @@ export const quantityByCategory = async (req, res, next) => {
     next(error.message);
   }
 };
+// query, el tipo de elemento que quiero buscar en caso de no recibir query, realizar la búsqueda general
 
 export const updateManyOnsale = async (req, res, next) => {
   try {
@@ -114,7 +115,7 @@ export const updateManyOnsale = async (req, res, next) => {
     next(error)
   }
 };
-
+// query, el tipo de elemento que quiero buscar en caso de no recibir query, realizar la búsqueda general
 export const getPromotions = async (req, res, next) => {
   try {
     const response = await service.getPromotions();

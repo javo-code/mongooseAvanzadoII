@@ -65,11 +65,79 @@ export const addCartToUser = async (req, res, next) => {
 };
 
 export const deleteFromCart = async (req, res, next) => {
-  try {
-    const { cartId, productId } = req.params;
-    const response = await service.deleteFromCart(cartId, productId);
-    res.status(200).json(response);
-  } catch (error) {
-    next(error.message);
-  }
-};
+    try {
+      const { idCart } = req.params;
+      const { idProd } = req.params;
+      const delProdToUserCart = await service.removeProdToCart(
+        idCart,
+        idProd,
+      );
+      if (!delProdToUserCart) res.json({ msg: "Error remove product to cart" });
+      else res.json({msg: `product ${idProd} deleted to cart`});
+    } catch (error) {
+      next(error.message);
+    }
+  };
+
+export const addProdToCart = async (req, res, next) => {
+    try {
+      const { idCart } = req.params;
+      const { idProd } = req.params;
+      const newProdToUserCart = await service.addProdToCart(
+        idCart,
+        idProd,
+      );
+      if (!newProdToUserCart) res.json({ msg: "Error add product to cart" });
+      else res.json(newProdToUserCart);
+    } catch (error) {
+      next(error.message);
+    }
+  };
+
+  export const removeProdInCart = async (req, res, next) => {
+    try {
+      const { idCart } = req.params;
+      const { idProd } = req.params;
+      const delProdToUserCart = await service.removeProdInCart(
+        idCart,
+        idProd,
+      );
+      if (!delProdToUserCart) res.json({ msg: "Error remove product to cart" });
+      else res.json({msg: `product ${idProd} deleted to cart`});
+    } catch (error) {
+      next(error.message);
+    }
+  };
+
+  export const updateProdQuantityInCart = async (req, res, next) => {
+    try {
+      const { idCart } = req.params;
+      const { idProd } = req.params;
+      const { quantity } = req.body;
+      const  updateProdQuantity = await service.updateProdQuantityInCart(
+        idCart,
+        idProd,
+        quantity
+      );
+      if (!updateProdQuantity) res.json({ msg: "Error update product quantity to cart" });
+      else res.json(updateProdQuantity);
+    } catch (error) {
+      next(error.message);
+    }
+  };
+
+  export const clearCart = async (req, res, next) => {
+    try {
+      const { idCart } = req.params;
+      const clearCart = await service.clearCart(
+        idCart,
+      );
+      if (!clearCart) res.json({ msg: "Error clear cart" });
+      else res.json(clearCart);
+    } catch (error) {
+      next(error.message);
+    }
+  };
+
+  
+  

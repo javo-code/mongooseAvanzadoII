@@ -20,7 +20,16 @@ router.put("/:id", controller.updateCart);
 //ELIMINAR CARRITO.
 router.delete("/:id", controller.deleteCart);
 
-// ELIMINAR PORDUCTO DESDE EL CARRITO
-router.delete('/deleteFromCart/:cartId/:productId', controller.deleteFromCart);
+//AGREGAR PRODUCTO y CANTIDAD POR BODY
+router.post("/:idCart/products/:idProd", controller.addProdToCart);
+
+// ELIMINAR PORDUCTO DENTRO DEL CARRITO
+router.delete("/:idCart/products/:idProd", controller.removeProdInCart);
+
+// ACTUALIZAR CANTIDAD DEL PRODUCTO EN EL CARRITO
+router.put("/:idCart/products/:idProd", controller.updateProdQuantityInCart);
+
+// LIMPIAR CARRITO
+router.delete("/clear/:idCart", controller.clearCart);
 
 export default router;

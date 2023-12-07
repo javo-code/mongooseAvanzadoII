@@ -4,7 +4,7 @@ import { CartModel } from "./models/carts.model.js";
 export default class CartsDaoMongoDB {
     async getAll() {
         try {
-            const response = await CartModel.find({}).populate('products');
+            const response = await CartModel.find({});
             return response;
         } catch (error) {
             console.error('Error al obtener todos los carritos:', error);
@@ -40,6 +40,7 @@ export default class CartsDaoMongoDB {
         }
     }
 
+
     async delete(id) {
         try {
             return await CartModel.findByIdAndDelete(id);
@@ -48,21 +49,49 @@ export default class CartsDaoMongoDB {
         }
     }    
     
-    async deleteFromCart(cartId, prodId) {
+
+    async addProdToCart(cartId, prodId) {
         try {
-            const cart = await CartModel.findById(cartId);
-            if (!cart) {
-            } 
-            const productIndex = cart.products.findIndex(product => product.toString() === prodId);
-            if (productIndex === -1) {
-            throw new Error('Product not found in the cart');
-            } console.log(productIndex)
-            cart.products.splice(productIndex, 1);
-            const updatedCart = await cart.save();
-            return updatedCart;
+        const cart = await CartModel.findById(cartId);
+        
+        if (!cart) return false;
+        cart.products.push({ product: prodId });
+        cart.save();
+        return cart;
         } catch (error) {
-            console.error(error);
+        console.log(error);
         }
     }
 
+    async removeProdInCart(cart, prod) {
+        try {
+        cart.products = cart.products.filter(
+            (p) => p.product._id.toString() !== prod.product._id.toString()
+        );
+        cart.save();
+        return cart;
+        } catch (error) {
+        console.log(error);
+        }
+    }
+
+    async updateProdQuantityInCart(cart, prod, quantity) {
+        try {
+        prod.quantity = quantity;
+        cart.save();
+        return prod;
+        } catch (error) {
+        console.log(error);
+        }
+    }
+
+    async clearCart(cart) {
+        try {
+        cart.products = [];
+        cart.save();
+        return cart;
+        } catch (error) {
+        console.log(error);
+        }
+    }
 }

@@ -15,7 +15,7 @@ router.post("/", productValidator, controller.createProduct);
 //CREAR ARCHIVO CON PRODUCTOS
 router.post('/file', controller.createFileCtr);
 
-//AGRGAR PRODUCTO AL CARRITO.
+//AGREGAR PRODUCTO AL CARRITO.
 router.post("/add/:idCart/:idProd", controller.addProdToCart)
 
 //MOSTRAR PRODUCTO POR ID.
