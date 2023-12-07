@@ -51,17 +51,28 @@ export default class CartsDaoMongoDB {
     
 
     async addProdToCart(cartId, prodId) {
-        try {
+  try {
         const cart = await CartModel.findById(cartId);
         
-        if (!cart) return false;
-        cart.products.push({ product: prodId });
-        cart.save();
-        return cart;
-        } catch (error) {
-        console.log(error);
+        if (!cart) {
+            return false;
         }
+        
+        const existingProduct = cart.products.find(item => item.product.equals(prodId));
+        
+        if (existingProduct) {
+            existingProduct.quantity++;
+        } else {
+            cart.products.push({ product: prodId });
+        }
+
+        await cart.save();
+        return cart;
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error adding product to cart');
     }
+}
 
     async removeProdInCart(cart, prod) {
         try {
